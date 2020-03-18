@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scripts/main.gd" type="Script" id=1]
 [ext_resource path="res://addons/analog_controller/analog.gd" type="Script" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://assets/background/stars_far.png" type="Texture" id=9]
 [ext_resource path="res://assets/background/stars_close.png" type="Texture" id=10]
 [ext_resource path="res://assets/rect.png" type="Texture" id=11]
+[ext_resource path="res://assets/audio/sfx_select1.ogg" type="AudioStream" id=12]
+[ext_resource path="res://assets/audio/sfx_select2.ogg" type="AudioStream" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -20,19 +22,35 @@ font_data = ExtResource( 8 )
 size = 60
 font_data = ExtResource( 8 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=9]
+size = 80
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=3]
 size = 20
 font_data = ExtResource( 8 )
 
-[sub_resource type="Curve" id=3]
+[sub_resource type="DynamicFont" id=7]
+size = 40
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 20
+font_data = ExtResource( 8 )
+
+[sub_resource type="Curve" id=4]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0209908, 0, 0, Vector2( 1, 0 ), -2.96993, 0.0, 0, 0 ]
 
-[sub_resource type="Gradient" id=4]
+[sub_resource type="Gradient" id=5]
 offsets = PoolRealArray( 0.00398406, 1 )
 colors = PoolColorArray( 0.701961, 0.117647, 0.113725, 1, 0.996078, 0.996078, 0.00392157, 0 )
 
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 360, 50 )
+
 [node name="main" type="Node2D"]
 script = ExtResource( 1 )
+autoPause = 10
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -74,6 +92,7 @@ scale = Vector2( 0.548463, 0.548463 )
 texture = ExtResource( 3 )
 
 [node name="AnalogController" type="Node2D" parent="UI"]
+pause_mode = 2
 position = Vector2( 360, 1156 )
 script = ExtResource( 2 )
 typeAnalogic = 0
@@ -100,6 +119,19 @@ margin_right = 231.0
 margin_bottom = 210.0
 custom_fonts/font = SubResource( 2 )
 text = "1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="statusPause" type="Label" parent="UI"]
+margin_top = 611.0
+margin_right = 720.0
+margin_bottom = 806.0
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.882353, 0.156863, 0.156863, 0.305882 )
+text = "Control
+to start"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -134,8 +166,20 @@ margin_left = 55.2222
 margin_top = 212.492
 margin_right = 235.222
 margin_bottom = 242.492
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 3 )
 text = "Reset Game"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="instructions3" type="Label" parent="UI"]
+margin_left = 477.222
+margin_top = 212.492
+margin_right = 657.222
+margin_bottom = 242.492
+custom_fonts/font = SubResource( 3 )
+text = "Reset Points"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -146,8 +190,20 @@ margin_left = 481.0
 margin_top = 138.0
 margin_right = 653.0
 margin_bottom = 210.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 7 )
 text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pointsAccumulatedNum" type="Label" parent="UI"]
+margin_left = 481.0
+margin_top = 181.0
+margin_right = 653.0
+margin_bottom = 210.0
+custom_fonts/font = SubResource( 8 )
+text = "-"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -175,8 +231,8 @@ spread = 10.16
 gravity = Vector2( 0, 200 )
 initial_velocity = 71.51
 angular_velocity = -294.19
-scale_amount_curve = SubResource( 3 )
-color_ramp = SubResource( 4 )
+scale_amount_curve = SubResource( 4 )
+color_ramp = SubResource( 5 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -195,8 +251,8 @@ spread = 10.16
 gravity = Vector2( 0, 200 )
 initial_velocity = 71.51
 angular_velocity = -294.19
-scale_amount_curve = SubResource( 3 )
-color_ramp = SubResource( 4 )
+scale_amount_curve = SubResource( 4 )
+color_ramp = SubResource( 5 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -212,13 +268,37 @@ limit_right = 720
 [node name="btnResetGame" type="TouchScreenButton" parent="UI"]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 67.7329, 67.9305 )
-scale = Vector2( 4.8169, 4.8169 )
+scale = Vector2( 4.8169, 5.62462 )
 normal = ExtResource( 11 )
 
+[node name="btnResetPoints" type="TouchScreenButton" parent="UI"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 491.733, 67.9305 )
+scale = Vector2( 4.8169, 5.62462 )
+normal = ExtResource( 11 )
+
+[node name="areaOffscreen" type="Area2D" parent="UI" groups=[
+"offScreen",
+]]
+
+[node name="collision" type="CollisionShape2D" parent="UI/areaOffscreen"]
+position = Vector2( 360, 1504 )
+shape = SubResource( 6 )
+
+[node name="collision2" type="CollisionShape2D" parent="UI/areaOffscreen"]
+position = Vector2( 360, -200 )
+shape = SubResource( 6 )
+
 [node name="timerSave" type="Timer" parent="."]
-wait_time = 2.0
 autostart = true
+
+[node name="sfxSelect1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+
+[node name="sfxSelect2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
 [connection signal="analogChange" from="UI/AnalogController" to="." method="_on_AnalogController_analogChange"]
 [connection signal="analogRelease" from="UI/AnalogController" to="." method="_on_AnalogController_analogRelease"]
 [connection signal="pressed" from="UI/btnResetGame" to="." method="_on_btnResetGame_pressed"]
+[connection signal="pressed" from="UI/btnResetPoints" to="." method="_on_btnResetPoints_pressed"]
 [connection signal="timeout" from="timerSave" to="." method="_on_timerSave_timeout"]

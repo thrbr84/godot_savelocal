@@ -9,7 +9,9 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 46.2567
 
-[node name="rock" type="Node2D"]
+[node name="rock" type="Node2D" groups=[
+"rock",
+]]
 script = ExtResource( 1 )
 
 [node name="image" type="Sprite" parent="."]
