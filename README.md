@@ -19,6 +19,12 @@ In the example project, I show how to use a local save system, with save control
 
 ----------
 
+##### Resources used
+
+[Addon - AnalogControle](https://github.com/thiagobruno/godot_analogcontroller)
+
+----------
+
 ### ...
 Will you use this code commercially? Rest assured you can use it freely and without having to mention anything, of course I will be happy if you at least remember the help and share it with friends, lol. If you feel at heart, consider buying me a coffee :heart: -> https://ko-fi.com/thiagobruno
 
