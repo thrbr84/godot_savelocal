@@ -1,0 +1,224 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://scripts/main.gd" type="Script" id=1]
+[ext_resource path="res://addons/analog_controller/analog.gd" type="Script" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://assets/plane1.png" type="Texture" id=4]
+[ext_resource path="res://assets/particles.png" type="Texture" id=5]
+[ext_resource path="res://addons/analog_controller/big_circle_DIRECTION_2_H.png" type="Texture" id=6]
+[ext_resource path="res://addons/analog_controller/small_circle_DIRECTION_2.png" type="Texture" id=7]
+[ext_resource path="res://assets/font/PoetsenOne-Regular.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://assets/background/stars_far.png" type="Texture" id=9]
+[ext_resource path="res://assets/background/stars_close.png" type="Texture" id=10]
+[ext_resource path="res://assets/rect.png" type="Texture" id=11]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 60
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 20
+font_data = ExtResource( 8 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0209908, 0, 0, Vector2( 1, 0 ), -2.96993, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0.00398406, 1 )
+colors = PoolColorArray( 0.701961, 0.117647, 0.113725, 1, 0.996078, 0.996078, 0.00392157, 0 )
+
+[node name="main" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.4, 0.4 )
+motion_mirroring = Vector2( 720, 1280 )
+
+[node name="black" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+modulate = Color( 1, 1, 1, 0.682353 )
+texture = ExtResource( 9 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 720, 1280 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.8, 0.8 )
+motion_mirroring = Vector2( 180, 180 )
+
+[node name="stars_close" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+modulate = Color( 1, 1, 1, 0.133333 )
+texture = ExtResource( 10 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 720, 1280 )
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="bkg" type="ColorRect" parent="UI"]
+margin_right = 720.0
+margin_bottom = 300.0
+color = Color( 0.133333, 0.407843, 0.635294, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon" type="Sprite" parent="UI/bkg"]
+position = Vector2( 360, 150 )
+scale = Vector2( 0.548463, 0.548463 )
+texture = ExtResource( 3 )
+
+[node name="AnalogController" type="Node2D" parent="UI"]
+position = Vector2( 360, 1156 )
+script = ExtResource( 2 )
+typeAnalogic = 0
+scaleBall = Vector2( 0.8, 0.8 )
+bigBallTexture = ExtResource( 6 )
+smallBallTexture = ExtResource( 7 )
+
+[node name="levelLabel" type="Label" parent="UI"]
+margin_left = 94.0
+margin_top = 92.0
+margin_right = 196.0
+margin_bottom = 128.0
+custom_fonts/font = SubResource( 1 )
+text = "Level"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="levelNum" type="Label" parent="UI"]
+margin_left = 59.0
+margin_top = 138.0
+margin_right = 231.0
+margin_bottom = 210.0
+custom_fonts/font = SubResource( 2 )
+text = "1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pointsLabel" type="Label" parent="UI"]
+margin_left = 493.0
+margin_top = 92.0
+margin_right = 648.0
+margin_bottom = 128.0
+custom_fonts/font = SubResource( 1 )
+text = "Points"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="instructions1" type="Label" parent="UI"]
+margin_left = 11.0
+margin_top = 327.0
+margin_right = 711.0
+margin_bottom = 363.0
+custom_fonts/font = SubResource( 1 )
+text = "Click on screen to shoot"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="instructions2" type="Label" parent="UI"]
+margin_left = 55.2222
+margin_top = 212.492
+margin_right = 235.222
+margin_bottom = 242.492
+custom_fonts/font = SubResource( 5 )
+text = "Reset Game"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pointsNum" type="Label" parent="UI"]
+margin_left = 481.0
+margin_top = 138.0
+margin_right = 653.0
+margin_bottom = 210.0
+custom_fonts/font = SubResource( 2 )
+text = "0"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="plane" type="Sprite" parent="UI" groups=[
+"plane",
+"player",
+]]
+position = Vector2( 360, 968 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 4 )
+
+[node name="particles_l" type="CPUParticles2D" parent="UI/plane"]
+position = Vector2( -17.6973, 122.217 )
+z_index = -1
+amount = 15
+lifetime = 0.7
+speed_scale = 2.0
+texture = ExtResource( 5 )
+emission_shape = 1
+emission_sphere_radius = 12.01
+direction = Vector2( 0, 1 )
+spread = 10.16
+gravity = Vector2( 0, 200 )
+initial_velocity = 71.51
+angular_velocity = -294.19
+scale_amount_curve = SubResource( 3 )
+color_ramp = SubResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="particles_r" type="CPUParticles2D" parent="UI/plane"]
+position = Vector2( 24.8027, 122.217 )
+z_index = -1
+amount = 15
+lifetime = 0.7
+speed_scale = 2.0
+texture = ExtResource( 5 )
+emission_shape = 1
+emission_sphere_radius = 12.01
+direction = Vector2( 0, 1 )
+spread = 10.16
+gravity = Vector2( 0, 200 )
+initial_velocity = 71.51
+angular_velocity = -294.19
+scale_amount_curve = SubResource( 3 )
+color_ramp = SubResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="shoot" type="Position2D" parent="UI/plane"]
+position = Vector2( 3.27017, -130.807 )
+
+[node name="camera" type="Camera2D" parent="UI/plane"]
+current = true
+limit_left = 0
+limit_right = 720
+
+[node name="btnResetGame" type="TouchScreenButton" parent="UI"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 67.7329, 67.9305 )
+scale = Vector2( 4.8169, 4.8169 )
+normal = ExtResource( 11 )
+
+[node name="timerSave" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+[connection signal="analogChange" from="UI/AnalogController" to="." method="_on_AnalogController_analogChange"]
+[connection signal="analogRelease" from="UI/AnalogController" to="." method="_on_AnalogController_analogRelease"]
+[connection signal="pressed" from="UI/btnResetGame" to="." method="_on_btnResetGame_pressed"]
+[connection signal="timeout" from="timerSave" to="." method="_on_timerSave_timeout"]
