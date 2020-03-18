@@ -110,8 +110,7 @@ func _input(event) -> void:
 	# Se apertar o espaço pelo teclado vai atirar
 	if event.is_action_pressed("ui_accept"):
 		_shoot()
-		
-	# Se o jogador clicar na tela dentro dessa área vai atirar
+	
 	if event is InputEventScreenTouch:
 		if event.is_pressed() and (event.position.y > 300 and event.position.y < 1280-200):
 			_shoot()

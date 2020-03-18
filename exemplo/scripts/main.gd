@@ -7,7 +7,6 @@ func _ready():
 	Game.connect("onSave", self, "_on_saveFile")
 	_updateLabels()
 	
-
 func _updateLabels():
 	$UI/levelNum.text = str(level)
 	$UI/pointsNum.text = str(points)
