@@ -8,14 +8,14 @@ Como utilizar um save local
 ----------
 
 ### Demonstração (PT-BR)
-- https://www.youtube.com/watch?v=[VIDEO]
+- https://www.youtube.com/watch?v=_4edpk5NGqw
 
-[![Video com a explicação](https://img.youtube.com/vi/[VIDEO]/0.jpg)](https://www.youtube.com/watch?v=[VIDEO])
+[![Video com a explicação](https://img.youtube.com/vi/_4edpk5NGqw/0.jpg)](https://www.youtube.com/watch?v=_4edpk5NGqw)
 
 ----------
 
 ##### Exemplo
-No projeto exemplo, mostro como utilizar um sistema de save local, com controle de save para não acumular o processamento de escrita em arquivo
+No exemplo mostro como utilizar um sistema de save local, utilizando um controle para não acumular o processamento de escrita em arquivo.
 
 ----------
 

@@ -3,21 +3,21 @@ extends Node2D
 class_name SpaceNode2D
 
 onready var audioStreamTheme = AudioStreamPlayer.new()
-
 onready var analogController = $UI/AnalogController
 onready var player = $UI/plane
 onready var camera = $UI/plane/camera
 onready var laserScene = preload("res://scenes/laser.tscn")
 onready var rocksScene = preload("res://scenes/rocks.tscn")
-
-var randMusic = RandomNumberGenerator.new()
-var speedInitialSpawner: int = 3
-var speedInitial: int = 5
 onready var speed: int = speedInitial
+
 export(int) var points: int = 0
 export(int) var level: int = 1
 export(int) var highScore: int = 0
 export(int) var autoPause: int = 5
+
+var randMusic = RandomNumberGenerator.new()
+var speedInitialSpawner: int = 3
+var speedInitial: int = 5
 var sizePlayer: float
 var sizeScreen: float
 var levelIncrease: int = 0
@@ -27,6 +27,7 @@ var idleTimer = Timer.new()
 
 """
 ANALOG CONTROLLER -------------------------
+https://github.com/thiagobruno/godot_analogcontroller
 """
 
 func _on_AnalogController_analogChange(force, pos) -> void:
@@ -39,7 +40,6 @@ func _on_AnalogController_analogChange(force, pos) -> void:
 	idleTimer.stop()
 	$UI/statusPause.text = str("")
 	velocity = (force * 20) # controla a nave
-
 
 func _on_AnalogController_analogRelease() -> void:
 	velocity = Vector2.ZERO # ao soltar o controle
@@ -147,7 +147,6 @@ func _sortPlayMusic() -> void:
 	audioStreamTheme.stream = fileStream
 	audioStreamTheme.volume_db = -10
 	audioStreamTheme.play()
-
 
 func _on_idleTimer_timeout():
 	if !get_tree().paused:

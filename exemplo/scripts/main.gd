@@ -1,9 +1,10 @@
 extends SpaceNode2D
 
 func _ready():
-	level = Game.readData('level')
+	level = Game.readData('level', 1)
 	points = Game.readData('points')
 	highScore = Game.readData('highScore')
+	
 	Game.connect("onSave", self, "_on_saveFile")
 	_updateLabels()
 	
@@ -21,7 +22,7 @@ func _on_point(qtd):
 		if points > highScore:
 			highScore = points
 			Game.saveData({
-				"highScore": points,
+				"highScore": points
 			}) # se não informarmos o "increment" esses valores serão sobrescritos
 			
 			# Aqui apenas incrementa os pontos do jogador

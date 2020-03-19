@@ -22,30 +22,30 @@ font_data = ExtResource( 8 )
 size = 60
 font_data = ExtResource( 8 )
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=3]
 size = 80
 font_data = ExtResource( 8 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
 size = 20
 font_data = ExtResource( 8 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=5]
 size = 40
 font_data = ExtResource( 8 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=6]
 size = 20
 font_data = ExtResource( 8 )
 
-[sub_resource type="Curve" id=4]
+[sub_resource type="Curve" id=7]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0209908, 0, 0, Vector2( 1, 0 ), -2.96993, 0.0, 0, 0 ]
 
-[sub_resource type="Gradient" id=5]
+[sub_resource type="Gradient" id=8]
 offsets = PoolRealArray( 0.00398406, 1 )
 colors = PoolColorArray( 0.701961, 0.117647, 0.113725, 1, 0.996078, 0.996078, 0.00392157, 0 )
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 360, 50 )
 
 [node name="main" type="Node2D"]
@@ -127,7 +127,7 @@ __meta__ = {
 margin_top = 611.0
 margin_right = 720.0
 margin_bottom = 806.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.882353, 0.156863, 0.156863, 0.305882 )
 text = "Control
 to start"
@@ -165,7 +165,7 @@ margin_left = 55.2222
 margin_top = 212.492
 margin_right = 235.222
 margin_bottom = 242.492
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "Reset Game"
 align = 1
 __meta__ = {
@@ -177,7 +177,7 @@ margin_left = 477.222
 margin_top = 212.492
 margin_right = 657.222
 margin_bottom = 242.492
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "Reset Points"
 align = 1
 __meta__ = {
@@ -189,7 +189,7 @@ margin_left = 481.0
 margin_top = 138.0
 margin_right = 653.0
 margin_bottom = 210.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 5 )
 text = "0"
 align = 1
 __meta__ = {
@@ -201,7 +201,7 @@ margin_left = 481.0
 margin_top = 181.0
 margin_right = 653.0
 margin_bottom = 210.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 6 )
 text = "-"
 align = 1
 __meta__ = {
@@ -230,8 +230,8 @@ spread = 10.16
 gravity = Vector2( 0, 200 )
 initial_velocity = 71.51
 angular_velocity = -294.19
-scale_amount_curve = SubResource( 4 )
-color_ramp = SubResource( 5 )
+scale_amount_curve = SubResource( 7 )
+color_ramp = SubResource( 8 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -250,8 +250,8 @@ spread = 10.16
 gravity = Vector2( 0, 200 )
 initial_velocity = 71.51
 angular_velocity = -294.19
-scale_amount_curve = SubResource( 4 )
-color_ramp = SubResource( 5 )
+scale_amount_curve = SubResource( 7 )
+color_ramp = SubResource( 8 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -282,11 +282,11 @@ normal = ExtResource( 11 )
 
 [node name="collision" type="CollisionShape2D" parent="UI/areaOffscreen"]
 position = Vector2( 360, 1504 )
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 
 [node name="collision2" type="CollisionShape2D" parent="UI/areaOffscreen"]
 position = Vector2( 360, -200 )
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 
 [node name="timerSave" type="Timer" parent="."]
 autostart = true

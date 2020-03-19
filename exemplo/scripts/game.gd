@@ -6,7 +6,7 @@ var save_path = "user://game_0.0.0.1.data"
 # variável base do nosso jogo
 var base_data: Dictionary = {
 	"level": 1,
-	"points": 1
+	"points": 0
 }
 
 # variável local, o jogo ficará trabalhando com ela e não com o arquivo
